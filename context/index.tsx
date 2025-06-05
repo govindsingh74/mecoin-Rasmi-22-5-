@@ -71,43 +71,40 @@ export const TOKEN_ICO_Provider = ({ children }: TokenICOContextProps) => {
 };
 
 
-  const BUY_TOKEN = async (amount: number | string) => {
+  const BUY_TOKEN = async (amount: string | number) => {
     try {
       setLoader(true);
+
       const address = await CHECK_WALLET_CONNECTED();
       if (!address) throw new Error("Wallet not connected");
 
       const contract = await TOKEN_ICO_CONTRACT();
-      if (!contract) throw new Error("Contract instance is null");
+      if (!contract) throw new Error("Failed to load contract");
 
       const tokenDetails = await contract.getTokenDetails();
-      const availableToken = parseFloat(
-        ethers.utils.formatEther(tokenDetails.balance.toString())
+
+      const pricePerToken = tokenDetails.tokenPrice; // BigNumber in wei
+      const tokenAmount = ethers.BigNumber.from(
+        ethers.utils.parseUnits(amount.toString(), 0) // only whole tokens
       );
-      if (availableToken <= 1) {
-        notifyError("Not enough tokens available for purchase");
-        return;
-      }
+      const totalCost = pricePerToken.mul(tokenAmount); // value in wei
 
-      const pricePerToken = tokenDetails.tokenPrice; // BigNumber already
-      const tokenAmount = ethers.BigNumber.from(Math.floor(Number(amount)));
-      const totalCost = pricePerToken.mul(tokenAmount); // BigNumber × BigNumber
-
-      const tx = await contract.buyToken(tokenAmount, {
-        value: totalCost, // correct value in wei
+      const transaction = await contract.buyToken(tokenAmount, {
+        value: totalCost,
         gasLimit: ethers.utils.hexlify(5000000),
       });
 
-      await tx.wait();
+      await transaction.wait();
       await TOKEN_ICO();
       notifySuccess("Transfer completed successfully");
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
       notifyError("Transaction failed");
     } finally {
       setLoader(false);
     }
   };
+
 
 
 
