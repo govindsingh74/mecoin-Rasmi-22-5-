@@ -19,10 +19,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: 'Twitter', icon: <Twitter className="w-5 h-5" />, url: 'https://twitter.com/mecoin' },
-    { name: 'Telegram', icon: <MessageSquare className="w-5 h-5" />, url: 'https://t.me/mecoin' },
-    { name: 'GitHub', icon: <Github className="w-5 h-5" />, url: 'https://github.com/mecoin' },
-    { name: 'Website', icon: <Globe className="w-5 h-5" />, url: 'https://mecoin.com' }
+    { name: 'Twitter', icon: <Twitter className="w-5 h-5" />, url: 'https://x.com/mecoinen' },
+    { name: 'Telegram', icon: <MessageSquare className="w-5 h-5" />, url: 'https://t.me/mecoinen' },
+    { name: 'GitHub', icon: <Github className="w-5 h-5" />, url: 'https://github.com' },
+    { name: 'Website', icon: <Globe className="w-5 h-5" />, url: 'https://mecoin.site' }
   ];
 
   return (

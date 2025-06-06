@@ -80,9 +80,9 @@ const AboutUIUX: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 rounded-full bg-purple-600/30 text-purple-300 text-sm font-medium mb-4">
-            Design Philosophy
+            Mecoin Philosophy
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Our UI/UX Approach</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">Our Simple Approach</h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Creating intuitive, engaging, and secure experiences for cryptocurrency users.
           </p>

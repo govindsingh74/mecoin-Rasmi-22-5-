@@ -88,19 +88,22 @@ const CommunitySection = () => {
               <h3 className="text-2xl font-bold text-white mb-6">Join Our Community</h3>
               <div className="flex flex-wrap justify-center gap-4">
                 <a
-                  href="#"
+                  href="https://t.me/mecoinen"
+                  target="_blank"
                   className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-medium transition-all duration-300"
                 >
                   Telegram
                 </a>
                 <a
-                  href="#"
+                  href="https://discord.com/channels/@me"
+                  target="_blank"
                   className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white font-medium transition-all duration-300"
                 >
                   Discord
                 </a>
                 <a
-                  href="#"
+                  href="https://x.com/mecoinen"
+                  target="_blank"
                   className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-full text-white font-medium transition-all duration-300"
                 >
                   Twitter

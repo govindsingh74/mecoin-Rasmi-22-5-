@@ -2,44 +2,44 @@ import React, { useEffect, useRef } from 'react';
 
 const timelineEvents = [
   {
-    year: "2021",
+    year: "2024",
     quarter: "Q3",
     title: "Concept Development",
     description: "The initial concept for MECOIN was developed by our founding team, focusing on creating a meme coin with real utility."
   },
   {
-    year: "2021",
+    year: "2024",
     quarter: "Q4",
     title: "Team Formation",
     description: "Our core team of blockchain experts, developers, and marketing specialists was assembled to bring MECOIN to life."
   },
   {
-    year: "2022",
-    quarter: "Q1",
+    year: "2024",
+    quarter: "Q4",
     title: "Initial Development",
     description: "Development of the MECOIN token and core infrastructure began, with a focus on security and scalability."
   },
   {
-    year: "2022",
-    quarter: "Q3",
+    year: "2024",
+    quarter: "Q4",
     title: "Private Beta Launch",
     description: "MECOIN launched in private beta with early adopters testing our wallet and swap features."
   },
   {
-    year: "2023",
-    quarter: "Q1",
+    year: "2024",
+    quarter: "Q4",
     title: "Public Launch",
     description: "MECOIN officially launched to the public, with our token becoming available on major exchanges."
   },
   {
-    year: "2023",
-    quarter: "Q4",
+    year: "2025",
+    quarter: "Q1",
     title: "Ecosystem Expansion",
     description: "Launch of MECOIN NFTs and the first version of our gaming platform, expanding our ecosystem."
   },
   {
-    year: "2024",
-    quarter: "Q2",
+    year: "2025",
+    quarter: "Q1",
     title: "Global Adoption",
     description: "Reaching over 1 million users worldwide, with continuous improvements to our platform and services."
   }

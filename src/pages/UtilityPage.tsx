@@ -18,7 +18,8 @@ const projects = [
       raised: "$2.5M+",
       participants: "10,000+",
       countries: "50+"
-    }
+    },
+    link: "https://ico.mecoin.site/"
   },
   {
     title: "MEPay Payment Gateway",
@@ -35,7 +36,8 @@ const projects = [
       processed: "$10M+",
       merchants: "500+",
       transactions: "100K+"
-    }
+    },
+    link: "https://mecoin.site/mepay"
   },
   {
     title: "LuxMeBet Number Game",
@@ -52,7 +54,8 @@ const projects = [
       players: "25,000+",
       totalPrizes: "$1M+",
       dailyGames: "5,000+"
-    }
+    },
+    link: "https://www.luxmebet.fun/"
   },
   {
     title: "CrickWin Fantasy Cricket",
@@ -69,7 +72,8 @@ const projects = [
       users: "50,000+",
       tournaments: "1,000+",
       prizePool: "$500K+"
-    }
+    },
+    link: "https://www.crickwinmedia.site/"
   }
 ];
 
@@ -136,9 +140,14 @@ const UtilityPage = () => {
               </div>
 
               <div className="mt-6 text-center">
-                <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full text-white font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full text-white font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 inline-block"
+                >
                   Learn More
-                </button>
+                </a>
               </div>
             </motion.div>
           ))}

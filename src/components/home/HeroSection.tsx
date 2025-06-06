@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import SwapInterface from './SwapInterface';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -54,12 +55,20 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+              <a
+                href="https://icopol.mecoin.site/" // 🔗 your external link
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+              >
                 Get Started
-              </button>
-              <button className="px-8 py-4 bg-white/10 rounded-full text-white font-medium hover:bg-white/20 transition-all duration-300 flex items-center">
+              </a>
+              <Link
+                to="/about"
+                className="px-8 py-4 bg-white/10 rounded-full text-white font-medium hover:bg-white/20 transition-all duration-300 flex items-center"
+              >
                 Learn More <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
+              </Link>
             </div>
 
             <motion.div

@@ -153,7 +153,7 @@ const AboutWhatWeDo: React.FC = () => {
               <div className="w-12 h-12 bg-blue-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-xl">👥</span>
               </div>
-              <div className="number text-4xl font-bold text-blue-400 mb-2" data-target="1500000">0</div>
+              <div className="number text-4xl font-bold text-blue-400 mb-2" data-target="15000">0</div>
               <p className="text-gray-300">Active Users</p>
             </div>
             
@@ -161,7 +161,7 @@ const AboutWhatWeDo: React.FC = () => {
               <div className="w-12 h-12 bg-blue-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-xl">🔄</span>
               </div>
-              <div className="number text-4xl font-bold text-blue-400 mb-2" data-target="50000000">0</div>
+              <div className="number text-4xl font-bold text-blue-400 mb-2" data-target="500000">0</div>
               <p className="text-gray-300">Transactions</p>
             </div>
             
@@ -177,7 +177,7 @@ const AboutWhatWeDo: React.FC = () => {
               <div className="w-12 h-12 bg-blue-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-xl">🖼️</span>
               </div>
-              <div className="number text-4xl font-bold text-blue-400 mb-2" data-target="75000">0</div>
+              <div className="number text-4xl font-bold text-blue-400 mb-2" data-target="12">0</div>
               <p className="text-gray-300">NFTs Minted</p>
             </div>
           </div>

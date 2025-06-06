@@ -2,40 +2,40 @@ import React, { useEffect, useRef } from 'react';
 
 const teamMembers = [
   {
-    name: "Alex Thompson",
+    name: "Ethan Brooks",
     role: "CEO & Founder",
     bio: "Blockchain visionary with 10+ years in fintech and cryptocurrency ventures.",
-    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    image: "https://cliizqypyvtfupzkruzl.supabase.co/storage/v1/object/sign/team/1.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iM2QwOGY4ZC0zZjFmLTQwMTUtYmZiYi05ZDIxNjIzMmZkYTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ0ZWFtLzEucG5nIiwiaWF0IjoxNzQ5MTkzMjUzLCJleHAiOjE3ODA3MjkyNTN9.92pEs0J7kH-Tfc8Zm_LK5zgiJczXxXTb5oHN7c2jKp8"
   },
   {
-    name: "Sophia Chen",
+    name: "Camila Duarte",
     role: "CTO",
     bio: "Former lead developer at major blockchain projects with expertise in smart contracts.",
-    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    image: "https://cliizqypyvtfupzkruzl.supabase.co/storage/v1/object/sign/team/2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iM2QwOGY4ZC0zZjFmLTQwMTUtYmZiYi05ZDIxNjIzMmZkYTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ0ZWFtLzIucG5nIiwiaWF0IjoxNzQ5MTkzMjk3LCJleHAiOjE3ODA3MjkyOTd9.bx7hN8WM0C-CmuY4jPkDQCi95DeQ9qC5XjLh_2IynDU"
   },
   {
-    name: "Marcus Johnson",
+    name: "Daniel Cartwright",
     role: "Head of Product",
     bio: "Product strategist specializing in crypto and Web3 user experiences.",
-    image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    image: "https://cliizqypyvtfupzkruzl.supabase.co/storage/v1/object/sign/team/3.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iM2QwOGY4ZC0zZjFmLTQwMTUtYmZiYi05ZDIxNjIzMmZkYTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ0ZWFtLzMucG5nIiwiaWF0IjoxNzQ5MTkzMzEyLCJleHAiOjE3ODA3MjkzMTJ9.y3GUfe-nanoknwPp-QKO4UfSAIgJgw-rldSwuAau2eM"
   },
   {
-    name: "Elena Rodriguez",
+    name: "Isabella Reyes",
     role: "Chief Marketing Officer",
     bio: "Marketing expert with a track record of building global crypto communities.",
-    image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    image: "https://cliizqypyvtfupzkruzl.supabase.co/storage/v1/object/sign/team/4.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iM2QwOGY4ZC0zZjFmLTQwMTUtYmZiYi05ZDIxNjIzMmZkYTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ0ZWFtLzQucG5nIiwiaWF0IjoxNzQ5MTkzMzQ2LCJleHAiOjE3ODA3MjkzNDZ9.DCCadtMZCGMKPhz9QYem0yC2ZdkzHpq0nJM20DiBM3c"
   },
   {
-    name: "David Kim",
+    name: "Ravi Patel",
     role: "Lead Blockchain Developer",
     bio: "Cryptography specialist with contributions to multiple open-source blockchain projects.",
-    image: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    image: "https://cliizqypyvtfupzkruzl.supabase.co/storage/v1/object/sign/team/5.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iM2QwOGY4ZC0zZjFmLTQwMTUtYmZiYi05ZDIxNjIzMmZkYTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ0ZWFtLzUucG5nIiwiaWF0IjoxNzQ5MTkzMzY0LCJleHAiOjE3ODA3MjkzNjR9.Ms2wFZF8ZAkVFVFlO4eys3GH0REIg8Apui3Iep01yFc"
   },
   {
-    name: "Olivia Martinez",
+    name: "Liwen Zhao",
     role: "Head of Operations",
     bio: "Operations expert with experience scaling crypto startups from concept to million-user platforms.",
-    image: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    image: "https://cliizqypyvtfupzkruzl.supabase.co/storage/v1/object/sign/team/6.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iM2QwOGY4ZC0zZjFmLTQwMTUtYmZiYi05ZDIxNjIzMmZkYTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ0ZWFtLzYucG5nIiwiaWF0IjoxNzQ5MTkzMzgwLCJleHAiOjE3ODA3MjkzODB9.J9iJK3XU4n0YIsU208Si3WF2jDVpBMru87GXkK6BHRo"
   }
 ];
 

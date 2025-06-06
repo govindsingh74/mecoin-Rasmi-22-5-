@@ -11,19 +11,19 @@ const goals = [
     title: "Ecosystem Expansion",
     description: "Develop a comprehensive ecosystem with seamless integration between all MECOIN products and services.",
     icon: "🔄",
-    timeframe: "2026"
+    timeframe: "2025"
   },
   {
     title: "Technological Innovation",
     description: "Continue pushing the boundaries of blockchain technology with faster, more secure, and more energy-efficient solutions.",
     icon: "⚡",
-    timeframe: "2027"
+    timeframe: "2026"
   },
   {
     title: "Sustainable Growth",
     description: "Build a self-sustaining economy within the MECOIN ecosystem that provides long-term value for all stakeholders.",
     icon: "🌱",
-    timeframe: "2028"
+    timeframe: "2027"
   }
 ];
 
