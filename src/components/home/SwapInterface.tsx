@@ -2,13 +2,20 @@ import React, { useState, useContext } from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { motion } from 'framer-motion';
 import { ArrowDownUp, Info, Settings } from 'lucide-react';
-import { TOKEN_ICO_Context } from '../../../context/index.tsx'; // ✅ import context
+import { TOKEN_ICO_Context } from '../../../context/index.tsx';
 
-const SwapInterface = () => {
-  const { BUY_TOKEN } = useContext(TOKEN_ICO_Context); // ✅ access BUY_TOKEN from context
+const SwapInterface: React.FC = () => {
+  const context = useContext(TOKEN_ICO_Context);
+
+  if (!context) {
+    return <div className="text-white">Loading context...</div>;
+  }
+
+  const { BUY_TOKEN } = context;
+
   const { address, isConnected } = useAccount();
-  const [fromAmount, setFromAmount] = useState('');
-  const [toAmount, setToAmount] = useState('');
+  const [meCoinAmount, setMeCoinAmount] = useState<string>('');
+  const [polAmount, setPolAmount] = useState<string>('');
 
   const { data: polBalance } = useBalance({ address });
   const { data: mecoinBalance } = useBalance({
@@ -16,15 +23,28 @@ const SwapInterface = () => {
     token: '0x8724b07Cf098F753EC8a3A08E6063Be98CBbDD06',
   });
 
+  const exchangeRate = 5; // 1 POL = 5 MECOIN
+
   const handleSwap = async () => {
     if (!isConnected) {
       alert('Please connect your wallet');
       return;
     }
 
+    const amount = parseFloat(meCoinAmount);
+    if (!amount || amount <= 0) {
+      alert('Enter a valid MECOIN amount');
+      return;
+    }
+
+    const tokensToBuy = amount; // In MECOIN
+    const polToSend = tokensToBuy / exchangeRate;
+
     try {
-      await BUY_TOKEN(fromAmount); // ✅ now using context method
+      await BUY_TOKEN(tokensToBuy);
       alert('Swap complete!');
+      setMeCoinAmount('');
+      setPolAmount('');
     } catch (err) {
       console.error(err);
       alert('Swap failed.');
@@ -43,53 +63,53 @@ const SwapInterface = () => {
         <Settings className="w-5 h-5 text-gray-300" />
       </div>
 
-      {/* FROM */}
+      {/* MECOIN (editable) */}
       <div className="bg-blue-900/30 rounded-xl p-4 mb-2">
         <div className="flex justify-between text-sm text-gray-300 mb-2">
-          <span>From</span>
-          <span>Balance: {polBalance?.formatted || '0.00'} POL</span>
+          <span>Buy</span>
+          <span>Balance: {mecoinBalance?.formatted || '0.00'} MECOIN</span>
         </div>
         <div className="flex items-center">
           <input
             type="number"
-            value={fromAmount}
+            value={meCoinAmount}
             onChange={(e) => {
               const input = e.target.value;
-              setFromAmount(input);
-              const num = Number(input);
-              setToAmount(!isNaN(num) && num > 0 ? (num * 4.2).toFixed(2) : '');
+              setMeCoinAmount(input);
+              const num = parseFloat(input);
+              setPolAmount(!isNaN(num) && num > 0 ? (num / exchangeRate).toFixed(6) : '');
             }}
             placeholder="0.00"
             className="bg-transparent text-2xl text-white w-full outline-none"
             min="0"
             step="any"
           />
-          <span className="bg-blue-800/50 text-white px-3 py-1 rounded-lg">POL</span>
+          <span className="bg-blue-800/50 text-white px-3 py-1 rounded-lg">MECOIN</span>
         </div>
       </div>
 
       {/* SWITCH */}
       <div className="flex justify-center -my-3">
-        <button className="bg-blue-600 p-2 rounded-lg hover:bg-blue-700">
+        <button className="bg-blue-600 p-2 rounded-lg hover:bg-blue-700" disabled>
           <ArrowDownUp className="text-white w-5 h-5" />
         </button>
       </div>
 
-      {/* TO */}
+      {/* POL (calculated) */}
       <div className="bg-blue-900/30 rounded-xl p-4 mt-2">
         <div className="flex justify-between text-sm text-gray-300 mb-2">
-          <span>To</span>
-          <span>Balance: {mecoinBalance?.formatted || '0.00'} MECOIN</span>
+          <span>Pay</span>
+          <span>Balance: {polBalance?.formatted || '0.00'} POL</span>
         </div>
         <div className="flex items-center">
           <input
             type="text"
-            value={toAmount}
+            value={polAmount}
             readOnly
             placeholder="0.00"
             className="bg-transparent text-2xl text-white w-full outline-none"
           />
-          <span className="bg-blue-800/50 text-white px-3 py-1 rounded-lg">MECOIN</span>
+          <span className="bg-blue-800/50 text-white px-3 py-1 rounded-lg">POL</span>
         </div>
       </div>
 
@@ -97,7 +117,7 @@ const SwapInterface = () => {
       <div className="mt-4 p-3 bg-blue-900/20 rounded-lg text-sm text-gray-300">
         <div className="flex justify-between">
           <span>Exchange Rate</span>
-          <span>1 POL = 4.2 MECOIN</span>
+          <span>1 POL = {exchangeRate} MECOIN</span>
         </div>
         <div className="flex justify-between mt-1">
           <span>Price Impact</span>
@@ -108,10 +128,10 @@ const SwapInterface = () => {
       {/* Action */}
       <button
         onClick={handleSwap}
-        disabled={!isConnected}
+        disabled={!isConnected || !Number(meCoinAmount)}
         className="w-full mt-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium py-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 disabled:opacity-50"
       >
-        {isConnected ? 'Swap' : 'Connect Wallet to Swap'}
+        {isConnected ? 'Buy Mecoin' : 'Connect Wallet to Buy'}
       </button>
 
       <div className="mt-4 text-center text-sm text-gray-400 flex justify-center items-center">

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import SEOHead from '../components/SEO/SEOHead';
+import { TOKEN_ICO_Context } from '../../context/index';
 import TokenInfo from '../components/tools/TokenInfo';
 import TransferCurrency from '../components/tools/TransferCurrency';
 import TransferToken from '../components/tools/TransferToken';
@@ -11,9 +13,21 @@ const ToolsPage = () => {
   const [transferModel, setTransferModel] = useState(false);
   const [openUpdateAddress, setOpenUpdateAddress] = useState(false);
   const [openUpdatePrice, setOpenUpdatePrice] = useState(false);
-  const [loader, setLoader] = useState(false);
 
-  // Mock data and functions - replace with actual implementations
+  const {
+    TOKEN_ICO,
+    TRANSFER_ETHER,
+    TRANSFER_TOKEN,
+    UPDATE_TOKEN,
+    UPDATE_TOKEN_PRICE,
+    CHECK_ACCOUNT_BALANCE,
+    ERC20,
+    loader,
+    setLoader,
+    currency
+  } = useContext(TOKEN_ICO_Context);
+
+  // Mock data for demonstration - replace with actual TOKEN_ICO data
   const mockDetail = {
     supply: 1000000,
     symbol: 'MECOIN',
@@ -22,15 +36,6 @@ const ToolsPage = () => {
     tokenBal: 1000,
     maticBal: 100,
     tokenAddr: '0x8724b07Cf098F753EC8a3A08E6063Be98CBbDD06'
-  };
-
-  const mockFunctions = {
-    TRANSFER_ETHER: (transfer) => console.log('Transfer ether:', transfer),
-    TRANSFER_TOKEN: (token) => console.log('Transfer token:', token),
-    UPDATE_TOKEN: (address) => console.log('Update token:', address),
-    UPDATE_TOKEN_PRICE: (price) => console.log('Update price:', price),
-    CHECK_ACCOUNT_BALANCE: async (address) => '1000.00',
-    ERC20: async (address) => ({ name: 'MECOIN', balance: '1000', symbol: 'ME' })
   };
 
   const tabs = [
@@ -43,6 +48,13 @@ const ToolsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-blue-900 py-24 px-4">
+      <SEOHead 
+        title="MECOIN Tools - Manage Your Cryptocurrency | Token Transfer & Swap"
+        description="Access powerful MECOIN tools to manage your tokens, transfer currency, update addresses, and more. Professional-grade cryptocurrency management platform."
+        keywords="MECOIN tools, token transfer, cryptocurrency management, blockchain tools, token swap, crypto utilities"
+        url="https://mecoin.com/tools"
+      />
+      
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 rounded-full bg-blue-600/30 text-blue-300 text-sm font-medium mb-4">
@@ -73,50 +85,50 @@ const ToolsPage = () => {
         </div>
 
         {/* Content */}
-        <div className="max-w-4xl mx-auto bg-gradient-to-br from-gray-800/50 to-blue-900/50 backdrop-blur-sm rounded-2xl border border-blue-500/20 p-8 shadow-xl">
+        <div className="max-w-4xl mx-auto bg-gradient-to-br from-gray-800/50 to-blue-900/50 backdrop-blur-sm rounded-2xl border border-blue-500/20 p-8 shadow-xl relative">
           {loader && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-2xl">
+            <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-2xl z-10">
               <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
             </div>
           )}
           
           {activeTab === 'token-info' && (
-            <TokenInfo detail={mockDetail} currency="MATIC" />
+            <TokenInfo detail={mockDetail} currency={currency} />
           )}
           {activeTab === 'transfer-currency' && (
             <TransferCurrency
               setTransferCurrency={setTransferCurrency}
-              TRANSFER_ETHER={mockFunctions.TRANSFER_ETHER}
+              TRANSFER_ETHER={TRANSFER_ETHER}
               detail={mockDetail}
-              currency="MATIC"
-              CHECK_ACCOUNT_BALANCE={mockFunctions.CHECK_ACCOUNT_BALANCE}
+              currency={currency}
+              CHECK_ACCOUNT_BALANCE={CHECK_ACCOUNT_BALANCE}
               setLoader={setLoader}
             />
           )}
           {activeTab === 'transfer-token' && (
             <TransferToken
               setTransferModel={setTransferModel}
-              TRANSFER_TOKEN={mockFunctions.TRANSFER_TOKEN}
-              ERC20={mockFunctions.ERC20}
+              TRANSFER_TOKEN={TRANSFER_TOKEN}
+              ERC20={ERC20}
               setLoader={setLoader}
             />
           )}
           {activeTab === 'update-address' && (
             <UpdateAddress
               detail={mockDetail}
-              currency="MATIC"
+              currency={currency}
               setOpenUpdateAddress={setOpenUpdateAddress}
-              UPDATE_TOKEN={mockFunctions.UPDATE_TOKEN}
-              ERC20={mockFunctions.ERC20}
+              UPDATE_TOKEN={UPDATE_TOKEN}
+              ERC20={ERC20}
               setLoader={setLoader}
             />
           )}
           {activeTab === 'update-price' && (
             <UpdatePrice
               detail={mockDetail}
-              currency="MATIC"
+              currency={currency}
               setOpenUpdatePrice={setOpenUpdatePrice}
-              UPDATE_TOKEN_PRICE={mockFunctions.UPDATE_TOKEN_PRICE}
+              UPDATE_TOKEN_PRICE={UPDATE_TOKEN_PRICE}
             />
           )}
         </div>

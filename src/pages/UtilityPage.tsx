@@ -4,9 +4,9 @@ import { Coins, Wallet, Gamepad2, Trophy } from 'lucide-react';
 
 const projects = [
   {
-    title: "MECOIN ICO App",
+    title: "MECOIN ICO App(TokenIndex)",
     description: "Our Initial Coin Offering (ICO) platform provides a secure and transparent way to participate in the MECOIN token sale. Features include real-time token pricing, automated distribution, and detailed analytics.",
-    icon: <Coins className="w-8 h-8" />,
+    icon: <img src="/public/tokenLaunch copy logo.png" alt="MECOIN Icon" className="w-12 h-12" />,
     features: [
       "Automated KYC/AML verification",
       "Multi-currency support",
