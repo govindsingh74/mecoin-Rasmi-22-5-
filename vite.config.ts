@@ -5,22 +5,23 @@ import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfil
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    exclude: ['lucide-react'],
     esbuildOptions: {
       define: {
-        global: 'globalThis', // ✅ Fixes WalletConnect `global` undefined error
+        global: 'globalThis', // 🔥 This is what fixes the global issue
       },
       plugins: [
         NodeGlobalsPolyfillPlugin({
-          buffer: true,
           process: true,
+          buffer: true,
         }),
       ],
     },
+    exclude: ['lucide-react'],
   },
-  server: {
-    headers: {
-      'Cross-Origin-Opener-Policy': 'unsafe-none',
+  resolve: {
+    alias: {
+      process: 'process/browser',
+      buffer: 'buffer',
     },
   },
   build: {
@@ -32,6 +33,11 @@ export default defineConfig({
           web3: ['ethers', '@rainbow-me/rainbowkit', 'wagmi'],
         },
       },
+    },
+  },
+  server: {
+    headers: {
+      'Cross-Origin-Opener-Policy': 'unsafe-none',
     },
   },
 });
