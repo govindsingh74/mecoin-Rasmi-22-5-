@@ -28,7 +28,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-2">
             <img
-              src="https://i.ibb.co/xVCF5vm/t-info-img.png"
+              src="/logo.png"
               alt="Logo"
               className="h-8 w-8"
             />
