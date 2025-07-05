@@ -11,5 +11,16 @@ export default defineConfig({
     headers: {
       'Cross-Origin-Opener-Policy': 'unsafe-none'
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          web3: ['ethers', '@rainbow-me/rainbowkit', 'wagmi']
+        }
+      }
+    }
   }
 });
